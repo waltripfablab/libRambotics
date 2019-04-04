@@ -11,7 +11,7 @@ int armMoveTo(int dest, int hold, int overshoot, int debug){
     printf("Overshoot value: %d\n", overshoot);
     printf("Debug mode?: %d\n", debug);
   	//Check if value is within range
-    if(dest > 4000 || dest < 100){
+    if(dest > 4050 || dest < 50){
     	printf("Invalid Value!\n");
     	return(1);
     }
@@ -24,7 +24,7 @@ int armMoveTo(int dest, int hold, int overshoot, int debug){
     	currentPos = analog(0);
         distanceToDest = dest - currentPos;
         //Turn distance into speed value for motor and set min speed
-    	distanceNorm = distanceToDest / 39;
+    	distanceNorm = distanceToDest / 40;
     	if(abs(distanceNorm) < 20){
             if(distanceNorm < 0){
             	distanceNorm = -20;
@@ -39,7 +39,7 @@ int armMoveTo(int dest, int hold, int overshoot, int debug){
         printf("%d\n", distanceNorm);
         }
         //Move the motor
-        motor(0, distanceNorm);    
+        motor(0, (distanceNorm*-1);    
     }
     if(overshoot != 0){
     	printf("Overshooting- be careful!\n");
